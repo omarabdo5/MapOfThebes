@@ -5,17 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>خريطة الجامعة</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .go-to-website-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        width: 200px;
+      }
+
+      .go-to-website-btn:hover {
+        background-color: #0056b3;
+      }
+
+      .logo img {
+        filter: brightness(0) invert(1);
+      }
+
+      body.dark .logo img {
+        filter: none;
+      }
+    </style>
   </head>
   <body>
     <header>
       <div class="logo">
-        <a href="#" onclick="return false;">
-          <img src="OIP-removebg-preview.png" alt="logo" />
-        </a>
+        <img src="OIP-removebg-preview.png" alt="logo" />
         <h1>اكاديميه طيبه</h1>
       </div>
       <div class="tools">
-        <button onclick="toggleTheme()" id="themeToggle">☀️</button>
+        <button onclick="toggleTheme()" id="themeToggle">🌙</button>
         <button onclick="showMap()">🗺️ عرض الخريطة</button>
       </div>
     </header>
@@ -46,10 +71,7 @@
     <section class="places" id="placesList">
       <!-- قسم المدرجات -->
       <div class="section lecture-halls">
-        <h2 class="section-title">
-          <i>🏛️</i>
-          المدرجات
-        </h2>
+        <h2 class="section-title">المدرجات</h2>
         <div class="places-grid">
           <div class="place-card" data-type="مدرج">
             <div class="image-container">
@@ -74,10 +96,7 @@
 
       <!-- قسم السكاشن -->
       <div class="section sections">
-        <h2 class="section-title">
-          <i>📚</i>
-          السكاشن
-        </h2>
+        <h2 class="section-title">السكاشن</h2>
         <div class="places-grid">
           <div class="place-card" data-type="سكشن">
             <div class="image-container">
@@ -85,7 +104,7 @@
             </div>
             <div class="content">
               <h3>سكشن A</h3>
-              <p>الدور الثاني</p>
+              <p>مبنى علوم حاسب</p>
             </div>
           </div>
           <div class="place-card" data-type="سكشن">
@@ -94,7 +113,7 @@
             </div>
             <div class="content">
               <h3>سكشن B</h3>
-              <p>الدور الثاني</p>
+              <p>مبنى علوم حاسب</p>
             </div>
           </div>
         </div>
@@ -102,10 +121,7 @@
 
       <!-- قسم القاعات -->
       <div class="section classrooms">
-        <h2 class="section-title">
-          <i>🏫</i>
-          القاعات
-        </h2>
+        <h2 class="section-title">القاعات</h2>
         <div class="places-grid">
           <div class="place-card" data-type="معمل">
             <div class="image-container">
@@ -113,7 +129,7 @@
             </div>
             <div class="content">
               <h3>معمل الشبكات</h3>
-              <p>الدور الثالث</p>
+              <p>مبنى علوم حاسب</p>
             </div>
           </div>
           <div class="place-card" data-type="قاعة">
@@ -122,7 +138,7 @@
             </div>
             <div class="content">
               <h3>قاعة المحاضرات</h3>
-              <p>الدور الثاني</p>
+              <p>مبنى علوم حاسب</p>
             </div>
           </div>
         </div>
@@ -130,10 +146,7 @@
 
       <!-- قسم الخدمات الطلابية -->
       <div class="section student-services">
-        <h2 class="section-title">
-          <i>👨‍🎓</i>
-          الخدمات الطلابية
-        </h2>
+        <h2 class="section-title">الخدمات الطلابية</h2>
         <div class="places-grid">
           <div class="place-card" data-type="مكتب">
             <div class="image-container">
@@ -141,7 +154,7 @@
             </div>
             <div class="content">
               <h3>مكتب شؤون الطلاب</h3>
-              <p>الدور الأول</p>
+              <p>مبنى شؤون الطلاب</p>
             </div>
           </div>
           <div class="place-card" data-type="مركز">
@@ -150,7 +163,7 @@
             </div>
             <div class="content">
               <h3>مركز التصوير</h3>
-              <p>الدور الأول</p>
+              <p>مبنى الخدمات</p>
             </div>
           </div>
         </div>
@@ -158,10 +171,7 @@
 
       <!-- قسم الخدمات العامة -->
       <div class="section general-services">
-        <h2 class="section-title">
-          <i>🏢</i>
-          الخدمات العامة
-        </h2>
+        <h2 class="section-title">الخدمات العامة</h2>
         <div class="places-grid">
           <div class="place-card" data-type="كافيتريا">
             <div class="image-container">
@@ -169,7 +179,7 @@
             </div>
             <div class="content">
               <h3>كافيتريا الطلاب</h3>
-              <p>الدور الأول</p>
+              <p>مبنى الخدمات</p>
             </div>
           </div>
           <div class="place-card" data-type="مكتبة">
@@ -178,7 +188,7 @@
             </div>
             <div class="content">
               <h3>المكتبة المركزية</h3>
-              <p>الدور الثاني</p>
+              <p>مبنى المكتبة</p>
             </div>
           </div>
         </div>
@@ -190,12 +200,10 @@
       <div class="modal-content">
         <button class="close-btn" onclick="closeModal()">×</button>
         <h3 id="modalTitle">عنوان المكان</h3>
-        <p id="modalInfo">معلومات إضافية عن هذا المكان داخل الحرم الجامعي.</p>
         <div id="modalDetails"></div>
+        <a href="#" class="go-to-website-btn">الذهاب للموقع</a>
       </div>
     </div>
-
-    <div class="loading" id="loading"></div>
 
     <script>
       const searchInput = document.getElementById("searchInput");
@@ -203,10 +211,7 @@
       const cards = placesList.getElementsByClassName("place-card");
       const modal = document.getElementById("infoModal");
       const modalTitle = document.getElementById("modalTitle");
-      const modalInfo = document.getElementById("modalInfo");
       const modalDetails = document.getElementById("modalDetails");
-      const campusMap = document.getElementById("campusMap");
-      const loading = document.getElementById("loading");
 
       // فلترة حسب النص
       searchInput.addEventListener("input", () => {
@@ -234,7 +239,6 @@
             }
           });
 
-          // إخفاء القسم إذا لم يكن هناك بطاقات مرئية
           section.style.display = visibleCards > 0 ? "block" : "none";
         });
       });
@@ -255,7 +259,6 @@
           const location = card.querySelector("p").textContent;
 
           modalTitle.textContent = title;
-          modalInfo.textContent = `معلومات عن ${title}`;
           modalDetails.innerHTML = `
             <p>الموقع: ${location}</p>
             <p>النوع: ${type}</p>
@@ -274,7 +277,11 @@
       function toggleTheme() {
         document.body.classList.toggle("dark");
         const themeToggle = document.getElementById("themeToggle");
-        themeToggle.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
+        if (document.body.classList.contains("dark")) {
+          themeToggle.textContent = "☀️";
+        } else {
+          themeToggle.textContent = "🌙";
+        }
       }
 
       // عرض الخريطة
