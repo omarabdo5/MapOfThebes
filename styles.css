@@ -3,9 +3,11 @@
 :root {
   --primary-color: #0721b6;
   --secondary-color: #464f7a;
-  --text-color: #333;
+  --text-color: #ffffff;
   --background-color: #f4f4f4;
   --card-background: white;
+  --nav-text: #ffffff;
+  --card-text: #333333;
 }
 
 body {
@@ -19,7 +21,7 @@ body {
 
 header {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--nav-text);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -34,13 +36,32 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+  color: var(--nav-text);
+}
+
+.logo a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.logo a:hover {
+  transform: scale(1.1);
 }
 
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo h1 {
+  color: var(--nav-text);
+  font-size: 1.8rem;
+  margin: 0;
 }
 
 .tools,
@@ -53,7 +74,7 @@ header {
 
 .tools button,
 .filter-buttons button {
-  color: white;
+  color: var(--nav-text);
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
@@ -67,6 +88,7 @@ header {
 .filter-buttons button:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #5a67d8;
 }
 
 .search-bar {
@@ -80,17 +102,25 @@ header {
 .search-bar input {
   width: 100%;
   max-width: 400px;
-  padding: 12px;
+  padding: 12px 20px;
   border-radius: 8px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--primary-color);
   font-size: 1rem;
   transition: all 0.3s ease;
+  background-color: white;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input::placeholder {
+  color: #666;
 }
 
 .search-bar input:focus {
   border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 5px rgba(38, 5, 83, 0.2);
+  box-shadow: 0 0 8px rgba(7, 33, 182, 0.2);
+  background-color: white;
 }
 
 .map-icon {
@@ -115,127 +145,37 @@ header {
 }
 
 .places {
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
 }
 
 .section-title {
-  color: var(--primary-color);
   font-size: 1.5rem;
+  color: var(--primary-color);
   margin-bottom: 1rem;
-  padding-right: 1rem;
-  border-right: 4px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.section-title i {
-  font-size: 1.8rem;
-}
-
 .places-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-}
-
-.section {
-  background-color: var(--card-background);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.section.lecture-halls {
-  border-top: 4px solid #4caf50;
-}
-
-.section.sections {
-  border-top: 4px solid #2196f3;
-}
-
-.section.classrooms {
-  border-top: 4px solid #ff9800;
-}
-
-.section.student-services {
-  border-top: 4px solid #9c27b0;
-}
-
-.section.general-services {
-  border-top: 4px solid #f44336;
 }
 
 .place-card {
   background-color: var(--card-background);
-  padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-weight: 600;
-  color: var(--text-color);
-  cursor: pointer;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.place-card .image-container {
-  width: 100%;
-  height: 150px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-.place-card .image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.place-card .image-container::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.place-card .content {
-  flex: 1;
-}
-
-.place-card .content h3 {
-  margin: 0 0 0.5rem 0;
-  color: var(--primary-color);
-}
-
-.place-card .content p {
-  margin: 0;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.place-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--primary-color);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #eee;
 }
 
 .place-card:hover {
@@ -243,24 +183,70 @@ header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.place-card:hover::before {
-  transform: scaleX(1);
+.place-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--card-text);
 }
 
-.map-image {
-  width: 90%;
-  margin: 1rem auto;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+.place-card p {
+  margin: 0.5rem 0;
+  color: var(--card-text);
 }
 
-.map-image:hover {
-  transform: scale(1.01);
+.place-card .type {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.9rem;
 }
 
-/* Modal */
+.place-card .image-container {
+  width: 100%;
+  height: 150px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.place-card .image-container::before {
+  content: "";
+}
+
+.place-card .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section.lecture-halls .section-title {
+  color: #e74c3c;
+  border-bottom-color: #e74c3c;
+}
+
+.section.classrooms .section-title {
+  color: #2ecc71;
+  border-bottom-color: #2ecc71;
+}
+
+.section.student-services .section-title {
+  color: #f39c12;
+  border-bottom-color: #f39c12;
+}
+
+.section.general-services .section-title {
+  color: #9b59b6;
+  border-bottom-color: #9b59b6;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -268,25 +254,23 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  z-index: 1001;
-  backdrop-filter: blur(5px);
+  z-index: 1000;
 }
 
 .modal-content {
-  background: var(--card-background);
+  background-color: white;
   padding: 2rem;
-  border-radius: 15px;
-  width: 90%;
+  border-radius: 12px;
   max-width: 500px;
-  text-align: center;
+  width: 90%;
   position: relative;
-  animation: modalFadeIn 0.3s ease;
+  animation: modalAppear 0.3s ease;
 }
 
-@keyframes modalFadeIn {
+@keyframes modalAppear {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -297,59 +281,134 @@ header {
   }
 }
 
-.modal-content h3 {
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
 .close-btn {
   position: absolute;
-  top: 10px;
-  left: 15px;
-  background: #ff4444;
-  color: white;
+  top: 1rem;
+  left: 1rem;
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 .close-btn:hover {
-  background: #ff0000;
-  transform: rotate(90deg);
+  color: var(--primary-color);
 }
 
-/* Dark Mode */
+.loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .dark {
-  --primary-color: #4a1b8f;
-  --secondary-color: #6b2cc9;
-  --text-color: #eee;
+  --primary-color: #1a1a1a;
+  --secondary-color: #2d3748;
+  --text-color: #ffffff;
   --background-color: #121212;
-  --card-background: #1f1f1f;
+  --card-background: #1e1e1e;
+  --nav-text: #ffffff;
+  --card-text: #e2e8f0;
+}
+
+.dark header {
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dark .tools button,
+.dark .filter-buttons button {
+  background-color: var(--secondary-color);
+  color: var(--nav-text);
+}
+
+.dark .tools button:hover,
+.dark .filter-buttons button:hover {
+  background-color: #4a5568;
+}
+
+.dark .search-bar input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--nav-text);
+}
+
+.dark .search-bar input:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark .search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark .place-card {
+  background-color: var(--card-background);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .place-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .dark .modal-content {
   background-color: var(--card-background);
-  color: var(--text-color);
+  color: var(--card-text);
+}
+
+.dark .close-btn {
+  color: var(--card-text);
+}
+
+.dark .close-btn:hover {
+  color: #ff4444;
 }
 
 /* Loading Animation */
 .loading {
   display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 
-.loading::after {
-  content: "";
+.loading-spinner {
   width: 50px;
   height: 50px;
-  border: 5px solid #f3f3f3;
+  border: 5px solid rgba(255, 255, 255, 0.1);
   border-top: 5px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
