@@ -285,16 +285,23 @@ header {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background: none;
+  background: #ff4444;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-color);
-  transition: color 0.3s ease;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .close-btn:hover {
-  color: var(--primary-color);
+  background: #ff0000;
+  transform: scale(1.1);
 }
 
 .loading {
@@ -384,11 +391,12 @@ header {
 }
 
 .dark .close-btn {
-  color: var(--card-text);
+  background: #ff4444;
+  color: white;
 }
 
 .dark .close-btn:hover {
-  color: #ff4444;
+  background: #ff0000;
 }
 
 /* Loading Animation */
@@ -421,4 +429,168 @@ header {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#locationButton {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 150px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#locationButton:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#locationButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  background-color: #000000;
+  color: #ffffff;
+}
+
+#locationButton::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+#locationButton:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+.dark #locationButton {
+  background-color: var(--secondary-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.dark #locationButton:hover {
+  background-color: #000000;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dark #locationButton:active {
+  background-color: #000000;
+  color: #ffffff;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.alert-content {
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.alert-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--card-text);
+  padding: 5px;
+  line-height: 1;
+  transition: color 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.alert-content .close-btn:hover {
+  color: #ff4444;
+}
+
+.alert-content h3 {
+  margin: 1rem 0;
+  color: var(--card-text);
+  padding: 0 1rem;
+}
+
+.alert-content .modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.alert-content .modal-actions button {
+  min-width: 100px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.alert-content .modal-actions button:hover {
+  background-color: #ff0000;
+  transform: translateY(-2px);
+}
+
+.dark .alert-content {
+  background-color: var(--card-background);
+}
+
+.dark .alert-content h3 {
+  color: var(--nav-text);
+}
+
+.dark .alert-content .close-btn {
+  color: var(--nav-text);
+}
+
+.dark .alert-content .modal-actions button {
+  background-color: #ff4444;
+}
+
+.dark .alert-content .modal-actions button:hover {
+  background-color: #ff0000;
 }
