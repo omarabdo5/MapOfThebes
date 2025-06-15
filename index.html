@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خريطة الجامعة</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="photo_2025-06-11_18-18-38.jpg" alt="logo" />
+        <h1>اكاديميه طيبه</h1>
+      </div>
+      <div class="tools">
+        <button onclick="toggleTheme()">☀️ / 🌙</button>
+        <button onclick="showMap()">🗺️ عرض الخريطة</button>
+      </div>
+    </header>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="ابحث عن مكان..." />
+      <div class="map-icon" onclick="showMap()">
+        <span>🗺️</span>
+        <span>خريطة الجامعة</span>
+      </div>
+    </div>
+
+    <div class="filter-buttons">
+      <button onclick="filterPlaces('مدرج')">مدرجات</button>
+      <button onclick="filterPlaces('سكشن')">سكاشن</button>
+      <button onclick="filterPlaces('قاعة')">قاعات</button>
+      <button onclick="filterPlaces('')">الكل</button>
+    </div>
+
+    <img
+      src="https://i.imgur.com/lt9sxAr.jpeg"
+      alt="خريطة الجامعة"
+      class="map-image"
+      id="campusMap"
+      style="display: none"
+    />
+
+    <section class="places" id="placesList">
+      <!-- قسم المدرجات -->
+      <div class="section lecture-halls">
+        <h2 class="section-title">
+          <i>🏛️</i>
+          المدرجات
+        </h2>
+        <div class="places-grid">
+          <div class="place-card" data-type="مدرج">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>مدرج ابن خلدون</h3>
+              <p>مبنى علوم حاسب</p>
+            </div>
+          </div>
+          <div class="place-card" data-type="مدرج">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>مدرج النيل</h3>
+              <p>شئون الطلبه</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم السكاشن -->
+      <div class="section sections">
+        <h2 class="section-title">
+          <i>📚</i>
+          السكاشن
+        </h2>
+        <div class="places-grid">
+          <div class="place-card" data-type="سكشن">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>سكشن A</h3>
+              <p>الدور الثاني</p>
+            </div>
+          </div>
+          <div class="place-card" data-type="سكشن">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>سكشن B</h3>
+              <p>الدور الثاني</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم القاعات -->
+      <div class="section classrooms">
+        <h2 class="section-title">
+          <i>🏫</i>
+          القاعات
+        </h2>
+        <div class="places-grid">
+          <div class="place-card" data-type="معمل">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>معمل الشبكات</h3>
+              <p>الدور الثالث</p>
+            </div>
+          </div>
+          <div class="place-card" data-type="قاعة">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>قاعة المحاضرات</h3>
+              <p>الدور الثاني</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم الخدمات الطلابية -->
+      <div class="section student-services">
+        <h2 class="section-title">
+          <i>👨‍🎓</i>
+          الخدمات الطلابية
+        </h2>
+        <div class="places-grid">
+          <div class="place-card" data-type="مكتب">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>مكتب شؤون الطلاب</h3>
+              <p>الدور الأول</p>
+            </div>
+          </div>
+          <div class="place-card" data-type="مركز">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>مركز التصوير</h3>
+              <p>الدور الأول</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- قسم الخدمات العامة -->
+      <div class="section general-services">
+        <h2 class="section-title">
+          <i>🏢</i>
+          الخدمات العامة
+        </h2>
+        <div class="places-grid">
+          <div class="place-card" data-type="كافيتريا">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>كافيتريا الطلاب</h3>
+              <p>الدور الأول</p>
+            </div>
+          </div>
+          <div class="place-card" data-type="مكتبة">
+            <div class="image-container">
+              <img src="photo_2025-06-11_18-18-38.jpg" type="image/jpg" />
+            </div>
+            <div class="content">
+              <h3>المكتبة المركزية</h3>
+              <p>الدور الثاني</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="infoModal">
+      <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        <h3 id="modalTitle">عنوان المكان</h3>
+        <p id="modalInfo">معلومات إضافية عن هذا المكان داخل الحرم الجامعي.</p>
+        <div id="modalDetails"></div>
+      </div>
+    </div>
+
+    <div class="loading" id="loading"></div>
+
+    <script>
+      const searchInput = document.getElementById("searchInput");
+      const placesList = document.getElementById("placesList");
+      const cards = placesList.getElementsByClassName("place-card");
+      const modal = document.getElementById("infoModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalInfo = document.getElementById("modalInfo");
+      const modalDetails = document.getElementById("modalDetails");
+      const campusMap = document.getElementById("campusMap");
+      const loading = document.getElementById("loading");
+
+      // فلترة حسب النص
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const sections = document.querySelectorAll(".section");
+
+        sections.forEach((section) => {
+          const cards = section.getElementsByClassName("place-card");
+          let visibleCards = 0;
+
+          Array.from(cards).forEach((card) => {
+            const title = card.querySelector("h3").textContent.toLowerCase();
+            const type = card.dataset.type.toLowerCase();
+            const location = card.querySelector("p").textContent.toLowerCase();
+
+            if (
+              title.includes(query) ||
+              type.includes(query) ||
+              location.includes(query)
+            ) {
+              card.style.display = "flex";
+              visibleCards++;
+            } else {
+              card.style.display = "none";
+            }
+          });
+
+          // إخفاء القسم إذا لم يكن هناك بطاقات مرئية
+          section.style.display = visibleCards > 0 ? "block" : "none";
+        });
+      });
+
+      // فلترة حسب النوع
+      function filterPlaces(type) {
+        Array.from(cards).forEach((card) => {
+          card.style.display =
+            card.dataset.type.includes(type) || type === "" ? "block" : "none";
+        });
+      }
+
+      // عرض نافذة المعلومات
+      Array.from(cards).forEach((card) => {
+        card.addEventListener("click", () => {
+          const title = card.querySelector("h3").textContent;
+          const type = card.dataset.type;
+          const location = card.querySelector("p").textContent;
+
+          modalTitle.textContent = title;
+          modalInfo.textContent = `معلومات عن ${title}`;
+          modalDetails.innerHTML = `
+            <p>الموقع: ${location}</p>
+            <p>النوع: ${type}</p>
+          `;
+
+          modal.style.display = "flex";
+        });
+      });
+
+      // إغلاق النافذة
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // الوضع الليلي
+      function toggleTheme() {
+        document.body.classList.toggle("dark");
+      }
+
+      // عرض الخريطة
+      function showMap() {
+        loading.style.display = "block";
+        setTimeout(() => {
+          campusMap.style.display = "block";
+          loading.style.display = "none";
+        }, 500);
+      }
+
+      // إغلاق النافذة عند النقر خارجها
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // إغلاق النافذة باستخدام زر ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
